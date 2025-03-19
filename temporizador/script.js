@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeButton = document.querySelector(".close-button");
 
     modal.style.display = "none";
-    
+
     // Quando clicar no botão secreto, mostra o modal
     secretButton.addEventListener("click", function () {
         modal.style.display = "flex"; // Mostra o modal
@@ -42,24 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
             `⏳ Já vivemos <strong>${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos</strong> de amor, e cada segundo é um novo capítulo da nossa história. 📖❤️`,
             `🕰️ Nosso amor já durou <strong>${days} dias, ${hours} horas, ${minutes} minutos</strong> e continua crescendo a cada batida do coração! 💓`,
             `💑 Desde aquele dia especial, já compartilhamos <strong>${minutes} abraços, ${hours*2} beijos e incontáveis sorrisos!</strong> 🥰`,
-            `💞 A cada segundo ao seu lado, meu amor só aumenta... Já são <strong>${days} dias e ${minutes} minutos</strong> de felicidade eterna! ✨`,
+            `💞 A cada segundo ao seu lado, meu amor só aumenta... Já são <strong>${days} dias</strong> de felicidade eterna! ✨`,
             `🌟 Em <strong>${days} dias, ${hours} horas e ${minutes} minutos</strong>, construímos um amor mais forte do que qualquer coisa. 💖`,
-            `💕 Cada segundo que passa é uma prova de que nosso amor é para sempre! Já são <strong>${days} dias e ${seconds} segundos</strong> juntos! 😍`
+            `💕 Cada segundo que passa é uma prova de que nosso amor é para sempre!😍`
         ];
 
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-
-        // Efeito de digitação na mensagem
-        realTimeCounterElement.innerHTML = "";
-        let i = 0;
-        function typeWriter() {
-            if (i < randomMessage.length) {
-                realTimeCounterElement.innerHTML = randomMessage.substring(0, i + 1);
-                i++;
-                setTimeout(typeWriter, 30);
-            }
-        }
-        typeWriter();
+        realTimeCounterElement.innerHTML = randomMessage;
     }
 
     updateTimeCounter();
@@ -105,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
             secretButton.classList.remove("show");
             secretButton.style.display = "none";
             setTimeout(moveSecretButton, 8000); // Reaparece em outro local
-        }, 1000);
+        }, 3000);
     }
 
     // Primeira aparição do botão após 10 segundos
