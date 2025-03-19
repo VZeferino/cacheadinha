@@ -1,0 +1,234 @@
+/* Fundo gradiente suave e uniforme */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Caixa principal */
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    z-index: 2;
+}
+
+/* Texto com melhor contraste */
+h1 {
+    font-size: 24px;
+    color: #ff3366;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    animation: heartbeat 1.5s infinite alternate;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+/* Destaque no contador */
+.highlight-text {
+    font-size: 20px;
+    font-weight: bold;
+    background: #ff6680;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* Imagens do casal */
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.images img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Fotos nos cantos da tela */
+.photo {
+    position: absolute;
+    width: 180px;  /* Antes era 150px */
+    height: 180px; /* Antes era 150px */
+    border: 6px solid white;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    transform: rotate(-5deg);
+    z-index: 1;
+    transition: transform 0.3s ease, scale 0.3s ease;
+    animation: floatEffect 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatEffect {
+    0% { transform: translateY(0px) rotate(-5deg); }
+    100% { transform: translateY(-5px) rotate(5deg); }
+}
+
+.photo:hover {
+    transform: scale(1.1) rotate(0deg);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.photo-top-left { top: 10%; left: 7%; transform: rotate(-10deg); }
+.photo-top-right { top: 10%; right: 7%; transform: rotate(10deg); }
+.photo-bottom-left { bottom: 10%; left: 7%; transform: rotate(5deg); }
+.photo-bottom-right { bottom: 10%; right: 7%; transform: rotate(-5deg); }
+.photo-center-left { top: 50%; left: 8%; transform: rotate(8deg); }
+.photo-center-right { top: 50%; right: 8%; transform: rotate(-8deg); }
+
+/* Animação dos corações flutuantes */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Ajustando os corações para aparecerem mais e de diferentes tamanhos */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: calc(15px + 20 * (Math.random()));
+    opacity: 0.7;
+    animation: floatUp linear infinite, glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+
+/* Keyframes para fazer os corações subirem */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+.secret-button {
+    position: absolute;
+    background: #ff6680;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0; /* Começa invisível */
+    display: none; /* Garante que não aparece antes da hora */
+    z-index: 10;
+}
+
+/* Efeito hover */
+.secret-button:hover {
+    background: #ff3366;
+}
+
+/* Classe para mostrar o botão suavemente */
+.secret-button.show {
+    opacity: 1;
+    transform: scale(1.1);
+    display: block;
+}
+
+/* Estilização do Modal */
+.modal {
+    display: none; /* Começa invisível */
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa da Cartinha */
+.modal-content {
+    background: #fff5f7;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    animation: popUp 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Efeito de entrada */
+@keyframes popUp {
+    0% { transform: scale(0.7); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Botão de Fechar */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ff3366;
+}
+
+.close-button:hover {
+    color: #d62050;
+}
+
+/* Estilização do texto dentro do modal */
+.modal-content h2 {
+    color: #ff3366;
+    font-size: 22px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.xoxo {
+    font-size: 16px;
+    font-style: italic;
+    color: #ff6680;
+    margin-top: 15px;
+}
