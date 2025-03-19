@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     updateTimeCounter();
-    setInterval(updateTimeCounter, 15000);
+    setInterval(updateTimeCounter, 20000);
 
     // Criar corações flutuantes aleatórios
     function createFloatingHeart() {
